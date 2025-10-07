@@ -1,0 +1,51 @@
+:root {
+    --font-color: white;
+    --primary-color: rgb(11, 25, 56);
+    --secondary-color: rgb(8, 17, 36);
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: var(--font-color);
+    background-color: var(--primary-color);
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    background-color: var(--secondary-color);
+
+    nav{
+        margin-left: 10px;
+        display: flex;
+        flex-direction: row;              
+        align-items: center;
+        gap: 10px;
+        a {
+            display: block;
+            
+        }
+    } 
+
+    div:first-child {
+        display: flex;
+        align-items: center;
+    }
+
+    &>div:last-child {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
