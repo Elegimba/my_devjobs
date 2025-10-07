@@ -2,6 +2,7 @@
     --font-color: white;
     --primary-color: rgb(11, 25, 56);
     --secondary-color: rgb(8, 17, 36);
+    --terciary-color: rgb(75, 89, 121);
 
 }
 
@@ -12,8 +13,13 @@
 }
 
 body {
-    color: var(--font-color);
+    font-family: sans-serif;
     background-color: var(--primary-color);
+    color: var(--font-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
 }
 
 header {
@@ -21,6 +27,9 @@ header {
     flex-direction: row;
     gap: 10px;
     background-color: var(--secondary-color);
+    font-size: 1rem;
+    padding-top: 10px;
+    padding-bottom: 10px; 
 
     nav{
         margin-left: 10px;
@@ -28,15 +37,20 @@ header {
         flex-direction: row;              
         align-items: center;
         gap: 10px;
+        font-size: 0.75rem;
         a {
             display: block;
-            
+            color: inherit;
+            text-decoration: none;
         }
     } 
 
     div:first-child {
         display: flex;
         align-items: center;
+        font-size: 0.5rem;
+        margin-left: 10px;
+        gap: 5px;
     }
 
     &>div:last-child {
@@ -46,6 +60,24 @@ header {
         justify-content: end;
         align-items: center;
         gap: 10px;
+        margin-right: 10px;
+        
+
+        button {
+            background-color: var(--terciary-color);
+            color: rgb(68, 157, 230);
+            font-size: 0.75rem;
+            width: 70px;
+            height: 30px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        svg {
+           display: block;
+           align-self: center;
+        }
+        
     }
 }
 
