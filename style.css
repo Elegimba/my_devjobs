@@ -81,3 +81,20 @@ header {
     }
 }
 
+li {
+    list-style: none;
+}
+
+main {
+    width: 80%;
+    margin: 0 auto;
+
+    section:first-child {
+        
+
+        h2, p {
+            text-align: center;
+        }
+    }
+
+}
