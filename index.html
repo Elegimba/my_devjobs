@@ -4,158 +4,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevJobs</title>
+    <title>DevJobs - Inicio</title>
 
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
     <header>
-        <div>
-            <i><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-apple">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path
-                        d="M4 11.319c0 3.102 .444 5.319 2.222 7.978c1.351 1.797 3.156 2.247 5.08 .988c.426 -.268 .97 -.268 1.397 0c1.923 1.26 3.728 .809 5.079 -.988c1.778 -2.66 2.222 -4.876 2.222 -7.977c0 -2.661 -1.99 -5.32 -4.444 -5.32c-1.267 0 -2.41 .693 -3.22 1.44a.5 .5 0 0 1 -.672 0c-.809 -.746 -1.953 -1.44 -3.22 -1.44c-2.454 0 -4.444 2.66 -4.444 5.319" />
-                    <path d="M7 12c0 -1.47 .454 -2.34 1.5 -3" />
-                    <path d="M12 7c0 -1.2 .867 -4 3 -4" />
-                </svg></i>
-            <h1>DevJobs</h1>
-        </div>
+        <h1>
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3org/2000/svg"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            DevJobs</h1>
+
         <nav>
             <a href="">Inicio</a>
             <a href="">Empleos</a>
-            <a href="">Empresas</a>
-            <a href="">Salarios</a>
         </nav>
 
         <div>
-            <button>Subir CV</button>
-            <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
-                    class="icon icon-tabler icons-tabler-filled icon-tabler-accessible">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path
-                        d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.051 6.844a1 1 0 0 0 -1.152 -.663l-.113 .03l-2.684 .895l-2.684 -.895l-.113 -.03a1 1 0 0 0 -.628 1.884l.109 .044l2.316 .771v.976l-1.832 2.75l-.06 .1a1 1 0 0 0 .237 1.21l.1 .076l.101 .06a1 1 0 0 0 1.21 -.237l.076 -.1l1.168 -1.752l1.168 1.752l.07 .093a1 1 0 0 0 1.653 -1.102l-.059 -.1l-1.832 -2.75v-.977l2.316 -.771l.109 -.044a1 1 0 0 0 .524 -1.221zm-3.949 -4.184a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0 -3z" />
-                </svg></div>
+            <a href="">Publicar un empleo</a>
+            <a href="">Iniciar sesión</a>
         </div>
     </header>
 
     <main>
         <section>
-            <h2>Encuentra tu próximo trabajo</h2>
-            <p>Explora miles de oportunidades en el sector tecnológico.</p>
+            <img src="./background.webp" width="200" />
+
+            <h2>Encuentra el trabajo de tus sueños</h2>
+
+            <p>Únete a la comunidad más grande de desarrolladores y encuentra tu próxima oportunidad.</p>
+
             <form role="search">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-search">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-                    <path d="M21 21l-6 -6" />
-                </svg>
-                <input type="text" placeholder="Busca trabajos, empresas o habilidades">
-                <button type="submit"></button>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-search">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+                        <path d="M21 21l-6 -6" />
+                    </svg>
+
+                    <input required type="text" placeholder="Buscar empleos por título, habilidad o empresa">
+
+                    <button type="submit">Buscar</button>
+                </div>
             </form>
-            <div>
-                <select name="" id="">
-                    <option value="tecnology">Tecnología</option>
-                </select>
-                <select name="" id="">
-                    <option value="location">Ubicación</option>
-                </select>
-                <select name="" id="">
-                    <option value="contract">Tipo de contrato</option>
-                </select>
-                <select name="" id="">
-                    <option value="experience">Nivel de experiencia</option>
-                </select>
-            </div>
         </section>
 
         <section>
-            <h4>Resultados de búsqueda</h4>
 
-            <ul>
-                <li>
-                    <article>
-                        <div>
-                            <div>
-                                <h6>Ingeniero de Software</h6>
-                                <small>Tech Solutions Inc.</small><small> | </small><small>Remoto</small>
-                            </div>
-                            <button>Aplicar</button>
-                        </div>
-                        <p>Buscamos un ingeniero de software con experiencia en desarrollo web y conociemientos en
-                            JavaScript, React y Node.js. El candidato ideal debe ser capaz de trabajar en equipo y tener
-                            buenas habilidades de comunicación.</p>
-                    </article>
-                </li>
-                <li>
-                    <article>
-                        <div>
-                            <div>
-                                <h6>Analista de datos</h6>
-                                <small>Data Driven Co.</small><small> | </small><small>Ciudad de México</small>
-                            </div>
-                            <button>Aplicar</button>
-                        </div>
-                        <p>Estamos buscando un analista de datos con experiencia en el manejo de grandes conjuntos
-                            de datos y herramientas de visualización. Se requiere conociemiento en SQL, Python y R.</p>
-                    </article>
-                </li>
-                <li>
-                    <article>
-                        <div>
-                            <div>
-                                <h6>Desarrollador de Aplicaciones Móviles</h6>
-                                <small>Mobiler Apps Ltd.</small><small> | </small><small>Guadalajara</small>
-                            </div>
-                            <button>Aplicar</button>
-                        </div>
-                        <p>Buscamos un desarrollador de aplicaciones móviles con experiencia en IOS y/o Android. El
-                            candidato debe tener conociemientos en Swift, Kotlin y el desarrollode interfaces de
-                            usuario.</p>
-                    </article>
-                </li>
-                <li>
-                    <article>
-                        <div>
-                            <div>
-                                <h6>Ingeniero de DevOps</h6>
-                                <small>Cloud Services SA</small><small> | </small><small>Remoto</small>
-                            </div>
-                            <button>Aplicar</button>
-                        </div>
-                        <p>Estamos buscando un ingeniero de DevOps con experiencia en la gestión de infraestructuras
-                            en la nube, automatización de
-                            procesos y herramientas de integración continua. Se requiere conocimiento en AWS, Azure
-                            o GCP.</p>
-                    </article>
-                </li>
-            </ul>
+            <header>
+                <h2>¿Por qué DevJobs?</h2>
+                <p>DevJobs es la principal plataforma de búsqueda de empleo para desarrolladores. Conectamos a los
+                    mejores
+                    talentos con las empresas más innovadoras.</p>
+            </header>
 
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-compact-left">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M13 20l-3 -8l3 -8" />
-                </svg>
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
-                <p>5</p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-compact-right">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M11 4l3 8l-3 8" />
-                </svg>
-            </div>
+            <footer>
+                <article>
+                    <svg fill="currentColor" height="32" viewBox="0 0 256 256" width="32"
+                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path
+                            d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z">
+                        </path>
+                    </svg>
+                    <h3>Encuentra el trabajo de tus sueños</h3>
+                    <p>Busca miles de empleos de las mejores empresas de todo el mundo.</p>
+                </article>
+
+                <article>
+                    <svg fill="currentColor" height="32" viewBox="0 0 256 256" width="32"
+                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path
+                            d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z">
+                        </path>
+                    </svg>
+                    <h3>Conecta con las mejores empresas</h3>
+                    <p>Conecta con empresas que están contratando por tus habilidades.</p>
+                </article>
+
+                <article>
+                    <svg fill="currentColor" height="32" viewBox="0 0 256 256" width="32"
+                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path
+                            d="M240,208H224V96a16,16,0,0,0-16-16H144V32a16,16,0,0,0-24.88-13.32L39.12,72A16,16,0,0,0,32,85.34V208H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM208,96V208H144V96ZM48,85.34,128,32V208H48ZM112,112v16a8,8,0,0,1-16,0V112a8,8,0,1,1,16,0Zm-32,0v16a8,8,0,0,1-16,0V112a8,8,0,1,1,16,0Zm0,56v16a8,8,0,0,1-16,0V168a8,8,0,0,1,16,0Zm32,0v16a8,8,0,0,1-16,0V168a8,8,0,0,1,16,0Z">
+                        </path>
+                    </svg>
+                    <h3>Obtén el salario que mereces</h3>
+                    <p>Obtén el salario que mereces con nuestra calculadora de salarios.</p>
+                </article>
+            </footer>
+
         </section>
-
     </main>
+
+    <footer>
+        <small>&copy; 2025 DevJobs. Todos los derechos reservados.</small>
+    </footer>
+
 </body>
 
 </html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevJobs - Empleos</title>
+
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                viewBox="0 0 24 24" xmlns="http://www.w3org/2000/svg">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+            DevJobs
+        </h1>
+        <nav>
+            <a href="">Inicio</a>
+            <a href="">Empleos</a>
+            <a href="">Empresas</a>
+            <a href="">Salarios</a>
+        </nav>
+
+        <div>
+            <button>Subir CV</button>
+            <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+                    class="icon icon-tabler icons-tabler-filled icon-tabler-accessible">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                        d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.051 6.844a1 1 0 0 0 -1.152 -.663l-.113 .03l-2.684 .895l-2.684 -.895l-.113 -.03a1 1 0 0 0 -.628 1.884l.109 .044l2.316 .771v.976l-1.832 2.75l-.06 .1a1 1 0 0 0 .237 1.21l.1 .076l.101 .06a1 1 0 0 0 1.21 -.237l.076 -.1l1.168 -1.752l1.168 1.752l.07 .093a1 1 0 0 0 1.653 -1.102l-.059 -.1l-1.832 -2.75v-.977l2.316 -.771l.109 -.044a1 1 0 0 0 .524 -1.221zm-3.949 -4.184a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0 -3z" />
+                </svg></div>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2>Encuentra tu próximo trabajo</h2>
+            <p>Explora miles de oportunidades en el sector tecnológico.</p>
+            <form role="search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-search">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+                    <path d="M21 21l-6 -6" />
+                </svg>
+                <input type="text" placeholder="Busca trabajos, empresas o habilidades">
+                <button type="submit"></button>
+            </form>
+            <div>
+                <select name="" id="">
+                    <option value="tecnology">Tecnología</option>
+                </select>
+                <select name="" id="">
+                    <option value="location">Ubicación</option>
+                </select>
+                <select name="" id="">
+                    <option value="contract">Tipo de contrato</option>
+                </select>
+                <select name="" id="">
+                    <option value="experience">Nivel de experiencia</option>
+                </select>
+            </div>
+        </section>
+
+        <section>
+            <h4>Resultados de búsqueda</h4>
+
+            <ul>
+                <li>
+                    <article>
+                        <div>
+                            <div>
+                                <h6>Ingeniero de Software</h6>
+                                <small>Tech Solutions Inc.</small><small> | </small><small>Remoto</small>
+                            </div>
+                            <button>Aplicar</button>
+                        </div>
+                        <p>Buscamos un ingeniero de software con experiencia en desarrollo web y conociemientos en
+                            JavaScript, React y Node.js. El candidato ideal debe ser capaz de trabajar en equipo y tener
+                            buenas habilidades de comunicación.</p>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <div>
+                            <div>
+                                <h6>Analista de datos</h6>
+                                <small>Data Driven Co.</small><small> | </small><small>Ciudad de México</small>
+                            </div>
+                            <button>Aplicar</button>
+                        </div>
+                        <p>Estamos buscando un analista de datos con experiencia en el manejo de grandes conjuntos
+                            de datos y herramientas de visualización. Se requiere conociemiento en SQL, Python y R.</p>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <div>
+                            <div>
+                                <h6>Desarrollador de Aplicaciones Móviles</h6>
+                                <small>Mobiler Apps Ltd.</small><small> | </small><small>Guadalajara</small>
+                            </div>
+                            <button>Aplicar</button>
+                        </div>
+                        <p>Buscamos un desarrollador de aplicaciones móviles con experiencia en IOS y/o Android. El
+                            candidato debe tener conociemientos en Swift, Kotlin y el desarrollode interfaces de
+                            usuario.</p>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <div>
+                            <div>
+                                <h6>Ingeniero de DevOps</h6>
+                                <small>Cloud Services SA</small><small> | </small><small>Remoto</small>
+                            </div>
+                            <button>Aplicar</button>
+                        </div>
+                        <p>Estamos buscando un ingeniero de DevOps con experiencia en la gestión de infraestructuras
+                            en la nube, automatización de
+                            procesos y herramientas de integración continua. Se requiere conocimiento en AWS, Azure
+                            o GCP.</p>
+                    </article>
+                </li>
+            </ul>
+
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-compact-left">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M13 20l-3 -8l3 -8" />
+                </svg>
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+                <p>4</p>
+                <p>5</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-compact-right">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M11 4l3 8l-3 8" />
+                </svg>
+            </div>
+        </section>
+
+    </main>
+</body>
+
+</html>
