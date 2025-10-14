@@ -76,7 +76,8 @@ nav {
     transition: color 0.2s;
     font-weight: 500;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: var(--primary);
       outline: none;
     }
@@ -97,7 +98,7 @@ header div a {
 }
 
 /* Hero */
-main > section:nth-child(1) {
+main>section:nth-child(1) {
   height: 500px;
   text-align: center;
   display: flex;
@@ -105,7 +106,7 @@ main > section:nth-child(1) {
   justify-content: center;
   align-items: center;
 
-  & > img {
+  &>img {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -137,7 +138,7 @@ form {
   padding-inline: 1rem;
 }
 
-form > div {
+form>div {
   display: flex;
   align-items: center;
   background-color: var(--input-bg);
@@ -183,7 +184,8 @@ button {
   font-size: 1rem;
   white-space: nowrap;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: var(--primary-hover);
     outline: 2px solid white;
     outline-offset: 2px;
@@ -193,19 +195,19 @@ button {
     transform: scale(0.95);
   }
 
-  &:disabled {
+  /* &:disabled {
     opacity: .5;
     pointer-events: none;
-  }
+  } */
 }
 
 /* Features Section */
-main > section:nth-child(2) {
+main>section:nth-child(2) {
   padding-inline: 1rem;
   background-color: var(--background);
   padding-top: 2rem;
 
-  & > header {
+  &>header {
     gap: 2px;
     flex-direction: column;
 
@@ -218,20 +220,20 @@ main > section:nth-child(2) {
     }
   }
 
-  & > div {
+  &>div {
     max-width: 1280px;
     margin: 0 auto;
   }
 }
 
-main > section:nth-child(2) h2 {
+main>section:nth-child(2) h2 {
   font-size: 1.875rem;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 1rem;
 }
 
-main > section:nth-child(2) > div > div:first-child > p {
+main>section:nth-child(2)>div>div:first-child>p {
   font-size: 1.125rem;
   color: var(--text-muted);
   max-width: 42rem;
@@ -239,7 +241,7 @@ main > section:nth-child(2) > div > div:first-child > p {
 }
 
 /* Grid de Features */
-main > section:nth-child(2) footer {
+main>section:nth-child(2) footer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 16px
@@ -369,6 +371,15 @@ main section div.jobs-listing {
     display: flex;
     align-items: start;
     gap: 1rem;
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
 
     small {
       font-size: 0.875rem;
@@ -402,7 +413,8 @@ main section div.jobs-listing {
     border-radius: 0.375rem;
     transition: all 0.3s;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: white;
     }
 
@@ -424,4 +436,95 @@ main section div.jobs-listing {
   &.is-applied {
     background: #4caf50;
   }
+}
+
+/* estilos para detalles.html */
+.details-route {
+  width: 85%;
+  margin: auto;
+  padding-block: 2rem;
+
+  p {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--text-muted);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  span {
+    color: var(--text-muted)
+  }
+}
+
+main section.job-attributes {
+  background-color: #061422;
+  width: 80%;
+  border-radius: 0.5rem;
+  padding-bottom: 3.125rem;
+
+  .job-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    div {
+      
+
+      h2 {
+        margin: 0;
+      }
+
+      small {
+        color: var(--text-muted);
+      }
+    }
+
+    button {
+      height: 50%;
+    }
+  }
+
+  article {
+    background-color: inherit;
+    box-shadow: none;
+    padding: 0;
+
+    h3 {
+      padding-top: 2rem;
+      padding-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    li {
+      list-style: none;
+
+      svg {
+        background-color: inherit;
+        vertical-align: middle;
+        padding-inline: 0;
+        margin-left: -1.25rem;
+      }
+    }
+    
+    &:nth-child(5) {
+      padding-bottom: 1.25rem;
+      border-bottom: 0.125rem solid var(--border);
+      border-radius: 0;
+    }
+  }
+
+  button {
+    display: block;
+    margin-left: auto;
+    margin-top: 20px;
+    background-color: #09f;
+  }
+  
 }
