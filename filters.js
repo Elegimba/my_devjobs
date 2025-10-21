@@ -1,8 +1,24 @@
+// Buscador por título
+const searchBar = document.querySelector('#empleos-search-input')
+
+searchBar.addEventListener('input', function() {
+    const jobs = document.querySelectorAll('.job-listing-card')
+    const searchValue = searchBar.value.toLowerCase()
+
+    resetOtherFilters(searchBar)
+
+    jobs.forEach(job => {
+        const jobTitle = job.querySelector('h3 a').textContent.toLowerCase()
+        const isShown = jobTitle.includes(searchValue)
+        job.classList.toggle('is-hidden', !isShown)
+    })
+})
+
+
 // Filtros "Select"
 const filterByTechnology = document.querySelector('#filter-technology')
 const filterByLocation = document.querySelector('#filter-location')
 const filterByExperienceLevel = document.querySelector('#filter-experience-level')
-
 
 const resetOtherFilters = (activeFilter) => {
     const filters = [filterByTechnology, filterByLocation, filterByExperienceLevel]
@@ -13,9 +29,9 @@ const resetOtherFilters = (activeFilter) => {
     })
 }
 
-
 filterByTechnology.addEventListener('change', function(){
     resetOtherFilters(filterByTechnology)
+    searchBar.value = ""
 
     const jobs = document.querySelectorAll('.job-listing-card')
     const selectedValue = filterByTechnology.value
@@ -29,6 +45,7 @@ filterByTechnology.addEventListener('change', function(){
 
 filterByLocation.addEventListener('change', function () {
     resetOtherFilters(filterByLocation)
+    searchBar.value = ""
 
     const jobs = document.querySelectorAll('.job-listing-card')
     const selectedValue = filterByLocation.value
@@ -42,6 +59,7 @@ filterByLocation.addEventListener('change', function () {
 
 filterByExperienceLevel.addEventListener('change', function () {
     resetOtherFilters(filterByExperienceLevel)
+    searchBar.value = ""
 
     const jobs = document.querySelectorAll('.job-listing-card')
     const selectedValue = filterByExperienceLevel.value
