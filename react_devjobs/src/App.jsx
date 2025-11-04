@@ -7,6 +7,11 @@ import { JobsListing } from './components/JobsListing.jsx'
 
 
 function App() {
+
+  const handlePageChange = (page) => {
+    console.log('Cambiando a la página:', page)
+  }
+  
   return (
     <>
       <Header />
@@ -17,7 +22,7 @@ function App() {
         <section>
           <JobsListing />
 
-          <Pagination />
+          <Pagination currentPage={2} totalPages={5} onPageChange={handlePageChange} />
 
         </section>
 
