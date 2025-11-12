@@ -7,7 +7,7 @@ import { JobsListing } from './components/JobsListing.jsx'
 import jobsData from './data.json'
 
 
-const RESULTS_PER_PAGE = 3
+const RESULTS_PER_PAGE = 4
 
 
 function App() {
