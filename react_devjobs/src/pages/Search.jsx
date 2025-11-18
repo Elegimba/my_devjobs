@@ -48,6 +48,10 @@ export function SearchPage() {
         setCurrentPage(1)
     }
 
+    useEffect(() => {
+        document.title = `Resultados: ${jobsWithTextFilter.length}, Página ${currentPage} - DevJobs`
+    }, [jobsWithTextFilter, currentPage])
+
     return (
         <main>
             <SearchFormSection onSearch={handleSearch} onTextFilter={handleTextFilter} />
