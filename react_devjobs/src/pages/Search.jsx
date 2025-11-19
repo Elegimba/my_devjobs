@@ -9,8 +9,7 @@ import jobsData from '../data.json'
 
 const RESULTS_PER_PAGE = 4
 
-
-export function SearchPage() {
+const useFilters = () => {
     const [textToFilter, setTextToFilter] = useState('')
     const [filters, setFilters] = useState({
         technology: '',
@@ -47,6 +46,15 @@ export function SearchPage() {
         setTextToFilter(newTextToFilter)
         setCurrentPage(1)
     }
+
+    return {
+        jobsWithTextFilter, pagedResults, totalPages, currentPage, handlePageChange, handleSearch, handleTextFilter
+    }
+}
+
+
+export function SearchPage() {
+    const { jobsWithTextFilter, pagedResults, totalPages, currentPage, handlePageChange, handleSearch, handleTextFilter } = useFilters()
 
     useEffect(() => {
         document.title = `Resultados: ${jobsWithTextFilter.length}, Página ${currentPage} - DevJobs`
