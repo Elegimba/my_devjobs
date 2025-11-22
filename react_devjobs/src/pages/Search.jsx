@@ -4,34 +4,42 @@ import { Pagination } from '../components/Pagination.jsx'
 import { SearchFormSection } from '../components/SearchFormSection.jsx'
 import { JobsListing } from '../components/JobsListing.jsx'
 
-import jobsData from '../data.json'
-
 
 const RESULTS_PER_PAGE = 4
 
 const useFilters = () => {
-    const [textToFilter, setTextToFilter] = useState('')
     const [filters, setFilters] = useState({
         technology: '',
         location: '',
         level: ''
     })
+    const [textToFilter, setTextToFilter] = useState('')
     const [currentPage, setCurrentPage] = useState(1)
 
-    const jobsFilteredByFilters = jobsData.filter(job => {
-        return (filters.technology === '' || job.data.technology === filters.technology)
-    })
+    const [jobs, setjobs] = useState([])
+    const [total, setTotal] = useState(0)
+    const [loading, setLoading] = useState(true)
 
-    const jobsWithTextFilter = textToFilter === '' ? jobsFilteredByFilters : jobsFilteredByFilters.filter(job => {
-        return job.titulo.toLowerCase().includes(textToFilter.toLowerCase())
-    })
+    useEffect(() => {
+        async function fetchJobs() {
+            try {
+                setLoading(true)
+                const response = await fetch('https://jscamp-api.vercel.app/api/jobs')
+                const json = await response.json()
 
-    const totalPages = Math.ceil(jobsWithTextFilter.length / RESULTS_PER_PAGE)
+                setjobs(json.data)
+                setTotal(json.total)
+            } catch (error) {
+                console.log('Error fetching jobs:', error)
+            } finally {
+                setLoading(false)
+            }
+        }
 
-    const pagedResults = jobsWithTextFilter.slice(
-        (currentPage - 1) * RESULTS_PER_PAGE,
-        currentPage * RESULTS_PER_PAGE
-    )
+        fetchJobs()
+    }, [])
+
+    const totalPages = Math.ceil(jobs.length / RESULTS_PER_PAGE)
 
     const handlePageChange = (page) => {
         setCurrentPage(page)
@@ -48,24 +56,24 @@ const useFilters = () => {
     }
 
     return {
-        jobsWithTextFilter, pagedResults, totalPages, currentPage, handlePageChange, handleSearch, handleTextFilter
+        loading, jobs, total, totalPages, currentPage, handlePageChange, handleSearch, handleTextFilter
     }
 }
 
 
 export function SearchPage() {
-    const { jobsWithTextFilter, pagedResults, totalPages, currentPage, handlePageChange, handleSearch, handleTextFilter } = useFilters()
+    const { loading, jobs, total, totalPages, currentPage, handlePageChange, handleSearch, handleTextFilter } = useFilters()
 
     useEffect(() => {
-        document.title = `Resultados: ${jobsWithTextFilter.length}, Página ${currentPage} - DevJobs`
-    }, [jobsWithTextFilter, currentPage])
+        document.title = `Resultados: ${total}, Página ${currentPage} - DevJobs`
+    }, [total, currentPage])
 
     return (
         <main>
             <SearchFormSection onSearch={handleSearch} onTextFilter={handleTextFilter} />
 
             <section>
-                <JobsListing jobs={pagedResults} />
+                <JobsListing jobs={jobs} />
 
                 <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
 
