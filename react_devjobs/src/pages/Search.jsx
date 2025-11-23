@@ -76,11 +76,11 @@ const useFilters = () => {
 export function SearchPage() {
     const { loading, jobs, total, totalPages, currentPage, handlePageChange, handleSearch, handleTextFilter } = useFilters()
 
-    const tittle = loading ? `cargando... - DevJobs` : `Resultados: ${total}, Página ${currentPage} - DevJobs`
+    const title = loading ? `cargando... - DevJobs` : `Resultados: ${total}, Página ${currentPage} - DevJobs`
 
     return (
         <main>
-            <tittle>{tittle}</tittle>
+            <title>{title}</title>
             <meta name="description" content="Explora miles de oportunidades laborales en el sector tecnológico. Encuentra tu próximo empleo en DevJobs" />
             <SearchFormSection onSearch={handleSearch} onTextFilter={handleTextFilter} />
 
