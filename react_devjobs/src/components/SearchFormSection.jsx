@@ -1,12 +1,19 @@
 import { useId, useState } from "react"
 
-const useSearchForm = ({ idTechnology, idLocation, idLevel, onSearch, onTextFilter }) => {
+
+let timeoutId = null
+
+const useSearchForm = ({ idTechnology, idLocation, idLevel, idText, onSearch, onTextFilter }) => {
   const [searchText, setSearchText] = useState("")
 
   const handleSubmit = (event) => {
     event.preventDefault()
 
     const formData = new FormData(event.currentTarget)
+
+    if (event.target.name === idText) {
+      return
+    }
 
     const filters = {
       technology: formData.get(idTechnology),
@@ -20,7 +27,14 @@ const useSearchForm = ({ idTechnology, idLocation, idLevel, onSearch, onTextFilt
   const handleTextChange = (event) => {
     const text = event.target.value
     setSearchText(text)
-    onTextFilter(text)
+
+    if (timeoutId) {
+      clearTimeout(timeoutId)
+    }
+
+    timeoutId = setTimeout(() => {
+      onTextFilter(text)
+    }, 500)
   }
 
   return {
@@ -33,7 +47,8 @@ export function SearchFormSection({ onTextFilter, onSearch }) {
   const idTechnology = useId()
   const idLocation = useId()
   const idLevel = useId()
-  const { handleSubmit, handleTextChange } = useSearchForm({ idTechnology, idLocation, idLevel, onSearch, onTextFilter })
+
+  const { handleSubmit, handleTextChange } = useSearchForm({ idTechnology, idLocation, idLevel, idText, onSearch, onTextFilter })
 
 
   return(

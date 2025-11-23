@@ -85,6 +85,7 @@ export function SearchPage() {
             <SearchFormSection onSearch={handleSearch} onTextFilter={handleTextFilter} />
 
             <section>
+                <h2>Resultados de búsqueda</h2>
                 {
                     loading ? <p>Cargando empleos...</p> : <JobsListing jobs={jobs} />
                 }
