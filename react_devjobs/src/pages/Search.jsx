@@ -24,7 +24,19 @@ const useFilters = () => {
         async function fetchJobs() {
             try {
                 setLoading(true)
-                const response = await fetch('https://jscamp-api.vercel.app/api/jobs')
+
+                const params = new URLSearchParams()
+                if (textToFilter) params.append('text', textToFilter)
+                if (filters.technology) params.append('technology', filters.technology)
+                if (filters.location) params.append('type', filters.location)
+                if (filters.level) params.append('level', filters.level)
+
+                const offset = (currentPage - 1) * RESULTS_PER_PAGE
+                params.append('limit', RESULTS_PER_PAGE)
+                params.append('offset', offset)
+                const queryParams = params.toString()
+
+                const response = await fetch(`https://jscamp-api.vercel.app/api/jobs?${queryParams}`)
                 const json = await response.json()
 
                 setjobs(json.data)
@@ -37,9 +49,9 @@ const useFilters = () => {
         }
 
         fetchJobs()
-    }, [])
+    }, [textToFilter, filters, currentPage])
 
-    const totalPages = Math.ceil(jobs.length / RESULTS_PER_PAGE)
+    const totalPages = Math.ceil(total / RESULTS_PER_PAGE)
 
     const handlePageChange = (page) => {
         setCurrentPage(page)
@@ -64,16 +76,18 @@ const useFilters = () => {
 export function SearchPage() {
     const { loading, jobs, total, totalPages, currentPage, handlePageChange, handleSearch, handleTextFilter } = useFilters()
 
-    useEffect(() => {
-        document.title = `Resultados: ${total}, Página ${currentPage} - DevJobs`
-    }, [total, currentPage])
+    const tittle = loading ? `cargando... - DevJobs` : `Resultados: ${total}, Página ${currentPage} - DevJobs`
 
     return (
         <main>
+            <tittle>{tittle}</tittle>
+            <meta name="description" content="Explora miles de oportunidades laborales en el sector tecnológico. Encuentra tu próximo empleo en DevJobs" />
             <SearchFormSection onSearch={handleSearch} onTextFilter={handleTextFilter} />
 
             <section>
-                <JobsListing jobs={jobs} />
+                {
+                    loading ? <p>Cargando empleos...</p> : <JobsListing jobs={jobs} />
+                }
 
                 <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
 
