@@ -30,9 +30,15 @@ export function Pagination( { currentPage, totalPages = 9, onPageChange }) {
         }
     }
 
+    const buildPageUrl = (page) => {
+        const url = new URL(window.location)
+        url.searchParams.set('page', page)
+        return `${url.pathname}?${url.searchParams.toString()}`
+    }
+
     return (
         <nav className={styles.pagination}>
-            <a href="#" style={stylePrevButton} onClick={handlePrevClick}>
+            <a href={buildPageUrl(currentPage - 1)} style={stylePrevButton} onClick={handlePrevClick}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                 className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left">
@@ -41,7 +47,7 @@ export function Pagination( { currentPage, totalPages = 9, onPageChange }) {
             </svg></a>
             
         {pages.map(page => (
-            <a href="#" key={page}
+            <a href={buildPageUrl(page)} key={page}
             className={currentPage === page ? styles.isActive : ''}
             onClick={(event) => handleChangePage(event, page)}
             >
@@ -49,7 +55,7 @@ export function Pagination( { currentPage, totalPages = 9, onPageChange }) {
             </a>
         ))}
 
-            <a href="#" style={styleNextButton} onClick={handleNextClick}>
+            <a href={buildPageUrl(currentPage + 1)} style={styleNextButton} onClick={handleNextClick}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                 className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right">

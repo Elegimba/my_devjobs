@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { Pagination } from '../components/Pagination.jsx'
 import { SearchFormSection } from '../components/SearchFormSection.jsx'
 import { JobsListing } from '../components/JobsListing.jsx'
+import { useRouter } from '../hooks/useRouter.jsx'
 
 
 const RESULTS_PER_PAGE = 4
@@ -19,6 +20,8 @@ const useFilters = () => {
     const [jobs, setjobs] = useState([])
     const [total, setTotal] = useState(0)
     const [loading, setLoading] = useState(true)
+
+    const { navigateTo } = useRouter()
 
     useEffect(() => {
         async function fetchJobs() {
@@ -50,6 +53,21 @@ const useFilters = () => {
 
         fetchJobs()
     }, [textToFilter, filters, currentPage])
+
+    useEffect(() => {
+        const params = new URLSearchParams()
+
+        if (textToFilter) params.append('text', textToFilter)
+        if (filters.technology) params.append('technology', filters.technology)
+        if (filters.location) params.append('type', filters.location)
+        if (filters.level) params.append('level', filters.level)
+
+        if (currentPage > 1) params.append('page', currentPage)
+
+        const newUrl = params.toString() ? `${window.location.pathname}?${params.toString()}` : window.location.pathname
+
+        navigateTo(newUrl)
+    }, [filters, currentPage, textToFilter, navigateTo])
 
     const totalPages = Math.ceil(total / RESULTS_PER_PAGE)
 
