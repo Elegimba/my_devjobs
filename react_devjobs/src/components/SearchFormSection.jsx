@@ -1,9 +1,8 @@
-import { useId, useState } from "react"
+import { useId, useRef, useState } from "react"
 
-
-let timeoutId = null
 
 const useSearchForm = ({ idTechnology, idLocation, idLevel, idText, onSearch, onTextFilter }) => {
+  const timeoutId = useRef(null)
   const [searchText, setSearchText] = useState("")
 
   const handleSubmit = (event) => {
@@ -28,11 +27,11 @@ const useSearchForm = ({ idTechnology, idLocation, idLevel, idText, onSearch, on
     const text = event.target.value
     setSearchText(text)
 
-    if (timeoutId) {
-      clearTimeout(timeoutId)
+    if (timeoutId.current) {
+      clearTimeout(timeoutId.current)
     }
 
-    timeoutId = setTimeout(() => {
+    timeoutId.current = setTimeout(() => {
       onTextFilter(text)
     }, 500)
   }
@@ -47,16 +46,24 @@ export function SearchFormSection({ onTextFilter, onSearch }) {
   const idTechnology = useId()
   const idLocation = useId()
   const idLevel = useId()
+  const inputRef = useRef()
 
   const { handleSubmit, handleTextChange } = useSearchForm({ idTechnology, idLocation, idLevel, idText, onSearch, onTextFilter })
 
+  const handleClearInput = (event) => {
+    event.default()
+    inputRef.current.value = ""
+    onTextFilter("")
+  }
 
-  return(
+
+  return (
     <section className="jobs-search">
       <h2>Encuentra tu próximo trabajo</h2>
       <p>Explora miles de oportunidades en el sector tecnológico.</p>
 
       <form onChange={handleSubmit} role="search" id="empleos-search-form">
+
         <div className="search-bar">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
@@ -65,7 +72,13 @@ export function SearchFormSection({ onTextFilter, onSearch }) {
             <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
             <path d="M21 21l-6 -6" />
           </svg>
+
           <input name={idText} onChange={handleTextChange} id="empleos-search-input" type="text" placeholder="Busca trabajos, empresas o habilidades" />
+
+          <button onClick={handleClearInput}>
+            ✖
+          </button>
+
         </div>
 
         <div className="search-filters">
