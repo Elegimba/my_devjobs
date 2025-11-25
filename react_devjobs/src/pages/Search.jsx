@@ -9,13 +9,23 @@ import { useRouter } from '../hooks/useRouter.jsx'
 const RESULTS_PER_PAGE = 4
 
 const useFilters = () => {
-    const [filters, setFilters] = useState({
-        technology: '',
-        location: '',
-        level: ''
+    const [filters, setFilters] = useState(() => {
+        const params = new URLSearchParams(window.location.search)
+        return {
+            technology: params.get('technology') || '',
+            location: params.get('type') || '',
+            level: params.get('level') || ''
+        }
     })
-    const [textToFilter, setTextToFilter] = useState('')
-    const [currentPage, setCurrentPage] = useState(1)
+    const [textToFilter, setTextToFilter] = useState(() => {
+        const params = new URLSearchParams(window.location.search)
+        return params.get('text') || ''
+    })
+    const [currentPage, setCurrentPage] = useState(() => {
+        const params = new URLSearchParams(window.location.search)
+        const page = Number(params.get('page'))
+        return Number.isNaN(page) ? page : 1
+    })
 
     const [jobs, setjobs] = useState([])
     const [total, setTotal] = useState(0)
@@ -86,13 +96,13 @@ const useFilters = () => {
     }
 
     return {
-        loading, jobs, total, totalPages, currentPage, handlePageChange, handleSearch, handleTextFilter
+        loading, jobs, total, totalPages, currentPage, textToFilter, handlePageChange, handleSearch, handleTextFilter
     }
 }
 
 
 export function SearchPage() {
-    const { loading, jobs, total, totalPages, currentPage, handlePageChange, handleSearch, handleTextFilter } = useFilters()
+    const { loading, jobs, total, totalPages, currentPage, textToFilter, handlePageChange, handleSearch, handleTextFilter } = useFilters()
 
     const title = loading ? `cargando... - DevJobs` : `Resultados: ${total}, Página ${currentPage} - DevJobs`
 
@@ -100,7 +110,7 @@ export function SearchPage() {
         <main>
             <title>{title}</title>
             <meta name="description" content="Explora miles de oportunidades laborales en el sector tecnológico. Encuentra tu próximo empleo en DevJobs" />
-            <SearchFormSection onSearch={handleSearch} onTextFilter={handleTextFilter} />
+            <SearchFormSection initialText={textToFilter} onSearch={handleSearch} onTextFilter={handleTextFilter} />
 
             <section>
                 <h2>Resultados de búsqueda</h2>
