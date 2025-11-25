@@ -3,7 +3,8 @@ import { Footer } from './components/Footer.jsx'
 
 import { HomePage } from './pages/Home.jsx'
 import { SearchPage } from './pages/Search.jsx'
-import { Route } from './components/Route.jsx'
+import { NotFoundPage } from './pages/404.jsx'
+import { Routes, Route } from 'react-router'
 
 
 
@@ -12,8 +13,11 @@ function App() {
   return (
     <>
       <Header />
-      <Route path="/" component={HomePage} />
-      <Route path="/search" component={SearchPage} />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
       <Footer />
     </>
   )
