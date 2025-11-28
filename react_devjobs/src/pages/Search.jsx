@@ -103,7 +103,7 @@ const useFilters = () => {
 }
 
 
-export function SearchPage() {
+export default function SearchPage() {
     const { filters, loading, jobs, total, totalPages, currentPage, textToFilter, handlePageChange, handleSearch, handleTextFilter } = useFilters()
 
     const title = loading ? `cargando... - DevJobs` : `Resultados: ${total}, Página ${currentPage} - DevJobs`

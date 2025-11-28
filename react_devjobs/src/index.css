@@ -474,8 +474,3 @@ main section div.jobs-listing {
   color: #3b82f6;
   font-weight: bold;
 }
-
-.nav-link-active {
-  color: yellow;
-  pointer-events: none;
-}
