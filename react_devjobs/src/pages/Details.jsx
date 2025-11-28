@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router'
 import { Link } from '../components/Link'
 
-function JobSection ({ title, content }) {
+function JobSection({ title, content }) {
     const html = snarkdown(content)
 
     return (
@@ -14,8 +14,8 @@ function JobSection ({ title, content }) {
                 {title}
             </h2>
 
-            <div className={`${styles.sectionContent} prose`} dangerouslySetInnerHTML={{__html: html}}>
-                
+            <div className={`${styles.sectionContent} prose`} dangerouslySetInnerHTML={{ __html: html }}>
+
             </div>
         </section>
     )
@@ -26,7 +26,7 @@ export function JobDetails() {
     const navigate = useNavigate()
 
     const [job, setJob] = useState(null)
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
     useEffect(() => {
@@ -48,8 +48,8 @@ export function JobDetails() {
 
     if (loading) {
         return <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1rem' }} >
-            <div className={Styles.loading}>
-                <p classname={Styles.loadingText}>Cargando...</p>
+            <div className={styles.loading}>
+                <p className={styles.loadingText}>Cargando...</p>
             </div>
         </div>
     }
@@ -72,7 +72,7 @@ export function JobDetails() {
             <div className={styles.container}>
                 <nav className={styles.breadcrumb}>
                     <Link href="/search" className={styles.breadcrumbButton}>
-                    Empleos</Link>
+                        Empleos</Link>
                     <span className={styles.breadcrumbSeparator}>/</span>
                     <span className={styles.breadcrumbCurrent}>{job.titulo}</span>
                 </nav>

@@ -434,92 +434,48 @@ main section div.jobs-listing {
 }
 
 /* estilos para detalles.html */
-.details-route {
-  width: 85%;
-  margin: auto;
-  padding-block: 2rem;
-
-  p {
-    display: flex;
-    gap: 0.75rem;
-  }
-
-  a {
-    text-decoration: none;
-    color: var(--text-muted);
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  span {
-    color: var(--text-muted)
-  }
+.prose {
+  line-height: 1.75;
 }
 
-main section.job-attributes {
-  background-color: #061422;
-  width: 80%;
-  border-radius: 0.5rem;
-  padding-bottom: 3.125rem;
+.prose ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
 
-  .job-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.prose li {
+  margin: 0.5rem 0;
+}
 
-    div {
+.prose p {
+  margin: 1rem 0;
+}
 
+.prose strong {
+  font-weight: 600;
+  color: #fff;
+}
 
-      h2 {
-        margin: 0;
-      }
+.prose em {
+  font-style: italic;
+}
 
-      small {
-        color: var(--text-muted);
-      }
-    }
+.prose code {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
 
-    button {
-      height: 50%;
-    }
-  }
+/* Iconos para listas */
+.prose ul li::marker {
+  content: "✓ ";
+  color: #3b82f6;
+  font-weight: bold;
+}
 
-  article {
-    background-color: inherit;
-    box-shadow: none;
-    padding: 0;
-
-    h3 {
-      padding-top: 2rem;
-      padding-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-
-    li {
-      list-style: none;
-
-      svg {
-        background-color: inherit;
-        vertical-align: middle;
-        padding-inline: 0;
-        margin-left: -1.25rem;
-      }
-    }
-
-    &:nth-child(5) {
-      padding-bottom: 1.25rem;
-      border-bottom: 0.125rem solid var(--border);
-      border-radius: 0;
-    }
-  }
-
-  button {
-    display: block;
-    margin-left: auto;
-    margin-top: 20px;
-    background-color: #09f;
-  }
-
+.nav-link-active {
+  color: yellow;
+  pointer-events: none;
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-
+import { useSearchParams } from 'react-router'
 import { Pagination } from '../components/Pagination.jsx'
 import { SearchFormSection } from '../components/SearchFormSection.jsx'
 import { JobsListing } from '../components/JobsListing.jsx'
@@ -9,21 +9,21 @@ import { useRouter } from '../hooks/useRouter.jsx'
 const RESULTS_PER_PAGE = 4
 
 const useFilters = () => {
+    const [searchParams, setSearchParams] = useSearchParams()
+
     const [filters, setFilters] = useState(() => {
-        const params = new URLSearchParams(window.location.search)
         return {
-            technology: params.get('technology') || '',
-            location: params.get('type') || '',
-            level: params.get('level') || ''
+            technology: searchParams.get('technology') || '',
+            location: searchParams.get('type') || '',
+            level: searchParams.get('level') || ''
         }
     })
-    const [textToFilter, setTextToFilter] = useState(() => {
-        const params = new URLSearchParams(window.location.search)
-        return params.get('text') || ''
-    })
+
+    const [textToFilter, setTextToFilter] = useState(() => searchParams.get('text') || '')
+
     const [currentPage, setCurrentPage] = useState(() => {
-        const params = new URLSearchParams(window.location.search)
-        const page = Number(params.get('page'))
+
+        const page = Number(searchParams.get('page'))
         return Number.isNaN(page) ? page : 1
     })
 
@@ -65,19 +65,19 @@ const useFilters = () => {
     }, [textToFilter, filters, currentPage])
 
     useEffect(() => {
-        const params = new URLSearchParams()
+        setSearchParams((params) => {
+            if (textToFilter) params.set('text', textToFilter)
+            if (filters.technology) params.set('technology', filters.technology)
+            if (filters.location) params.set('type', filters.location)
+            if (filters.level) params.set('level', filters.level)
 
-        if (textToFilter) params.append('text', textToFilter)
-        if (filters.technology) params.append('technology', filters.technology)
-        if (filters.location) params.append('type', filters.location)
-        if (filters.level) params.append('level', filters.level)
+            if (currentPage > 1) params.set('page', currentPage)
 
-        if (currentPage > 1) params.append('page', currentPage)
+            return params
+        })
 
-        const newUrl = params.toString() ? `${window.location.pathname}?${params.toString()}` : window.location.pathname
 
-        navigateTo(newUrl)
-    }, [filters, currentPage, textToFilter, navigateTo])
+    }, [filters, currentPage, textToFilter, setSearchParams])
 
     const totalPages = Math.ceil(total / RESULTS_PER_PAGE)
 
