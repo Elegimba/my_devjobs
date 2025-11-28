@@ -1,11 +1,25 @@
 import styles from './Details.module.css'
+import snarkdown from 'snarkdown'
 
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router'
+import { Link } from '../components/Link'
 
-/* function JobSection ({ title, content }) {
+function JobSection ({ title, content }) {
     const html = snarkdown(content)
-} */
+
+    return (
+        <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>
+                {title}
+            </h2>
+
+            <div className={`${styles.sectionContent} prose`} dangerouslySetInnerHTML={{__html: html}}>
+                
+            </div>
+        </section>
+    )
+}
 
 export function JobDetails() {
     const { jobId } = useParams()
@@ -54,9 +68,31 @@ export function JobDetails() {
     }
 
     return (
-        <>
-            <h2>Job Detail</h2>
-            <h3>La id es {jobId}</h3>
-        </>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1rem' }}>
+            <div className={styles.container}>
+                <nav className={styles.breadcrumb}>
+                    <Link href="/search" className={styles.breadcrumbButton}>
+                    Empleos</Link>
+                    <span className={styles.breadcrumbSeparator}>/</span>
+                    <span className={styles.breadcrumbCurrent}>{job.titulo}</span>
+                </nav>
+            </div>
+
+            <header className={styles.header}>
+                <h2 className={styles.title}>{job.titulo}</h2>
+                <p className={styles.meta}>
+                    {job.empresa} · {job.ubicacion}
+                </p>
+            </header>
+
+            <button className={styles.applyButton}>
+                Aplicar ahora
+            </button>
+
+            <JobSection title="Descripción del puesto" content={job.content.description} />
+            <JobSection title="Responsabilidades" content={job.content.responsibilities} />
+            <JobSection title="Requisitos" content={job.content.requirements} />
+            <JobSection title="Acerca de la empresa" content={job.content.about} />
+        </div>
     )
 }
