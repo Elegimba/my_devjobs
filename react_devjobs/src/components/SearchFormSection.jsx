@@ -41,19 +41,27 @@ const useSearchForm = ({ idTechnology, idLocation, idLevel, idText, onSearch, on
   }
 }
 
-export function SearchFormSection({ onTextFilter, onSearch, initialText }) {
+export function SearchFormSection({ initialFilters, onTextFilter, onSearch, initialText }) {
   const idText = useId()
-  const idTechnology = useId()
-  const idLocation = useId()
-  const idLevel = useId()
   const inputRef = useRef()
+  const idTechnology = useId()
+  const technologyRef = useRef()
+  const idLocation = useId()
+  const locationRef = useRef()
+  const idLevel = useId()
+  const levelRef = useRef()
 
   const { handleSubmit, handleTextChange } = useSearchForm({ idTechnology, idLocation, idLevel, idText, onSearch, onTextFilter })
 
   const handleClearInput = (event) => {
-    event.default()
+    event.preventDefault()
     inputRef.current.value = ""
     onTextFilter("")
+
+    technologyRef.current.value = ""
+    locationRef.current.value = ""
+    levelRef.current.value = ""
+    onSearch({ technology: "", location: "", level: "" })
   }
 
 
@@ -82,7 +90,7 @@ export function SearchFormSection({ onTextFilter, onSearch, initialText }) {
         </div>
 
         <div className="search-filters">
-          <select name={idTechnology} id="filter-technology">
+          <select name={idTechnology} id="filter-technology" defaultValue={initialFilters.technology} ref={technologyRef}>
             <option value="">Tecnología</option>
             <option value="javascript">JavaScript</option>
             <option value="python">Python</option>
@@ -91,7 +99,7 @@ export function SearchFormSection({ onTextFilter, onSearch, initialText }) {
             <option value="node.js">Node.js</option>
           </select>
 
-          <select name={idLocation} id="filter-location">
+          <select name={idLocation} id="filter-location" defaultValue={initialFilters.location} ref={locationRef}>
             <option value="">Ubicación</option>
             <option value="remoto">Remoto</option>
             <option value="cdmx">Ciudad de México</option>
@@ -100,7 +108,7 @@ export function SearchFormSection({ onTextFilter, onSearch, initialText }) {
             <option value="barcelona">Barcelona</option>
           </select>
 
-          <select name={idLevel} id="filter-experience-level">
+          <select name={idLevel} id="filter-experience-level" defaultValue={initialFilters.level} ref={levelRef}>
             <option value="">Nivel de experiencia</option>
             <option value="junior">Junior</option>
             <option value="mid">Mid-level</option>

@@ -65,7 +65,9 @@ const useFilters = () => {
     }, [textToFilter, filters, currentPage])
 
     useEffect(() => {
-        setSearchParams((params) => {
+        setSearchParams(() => {
+            const params = new URLSearchParams()
+            
             if (textToFilter) params.set('text', textToFilter)
             if (filters.technology) params.set('technology', filters.technology)
             if (filters.location) params.set('type', filters.location)
@@ -96,13 +98,13 @@ const useFilters = () => {
     }
 
     return {
-        loading, jobs, total, totalPages, currentPage, textToFilter, handlePageChange, handleSearch, handleTextFilter
+        filters, loading, jobs, total, totalPages, currentPage, textToFilter, handlePageChange, handleSearch, handleTextFilter
     }
 }
 
 
 export function SearchPage() {
-    const { loading, jobs, total, totalPages, currentPage, textToFilter, handlePageChange, handleSearch, handleTextFilter } = useFilters()
+    const { filters, loading, jobs, total, totalPages, currentPage, textToFilter, handlePageChange, handleSearch, handleTextFilter } = useFilters()
 
     const title = loading ? `cargando... - DevJobs` : `Resultados: ${total}, Página ${currentPage} - DevJobs`
 
@@ -110,7 +112,7 @@ export function SearchPage() {
         <main>
             <title>{title}</title>
             <meta name="description" content="Explora miles de oportunidades laborales en el sector tecnológico. Encuentra tu próximo empleo en DevJobs" />
-            <SearchFormSection initialText={textToFilter} onSearch={handleSearch} onTextFilter={handleTextFilter} />
+            <SearchFormSection initialText={textToFilter} initialFilters={filters} onSearch={handleSearch} onTextFilter={handleTextFilter} />
 
             <section>
                 <h2>Resultados de búsqueda</h2>
