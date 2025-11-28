@@ -1,4 +1,5 @@
 import styles from './Pagination.module.css'
+
 export function Pagination( { currentPage, totalPages = 9, onPageChange }) {
     // generar un array de páginas a mostrar
     const pages = Array.from({ length: totalPages }, (_, i) => i + 1)
